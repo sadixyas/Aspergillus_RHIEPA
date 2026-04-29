@@ -141,6 +141,3 @@ the path in `DB_CISBP` in `00_config.sh` is wrong.
 
 ---
 
-## Citation
-
-> Moses AM, Stajich JE, Gasch AP, Knowles DA. (2026). Inferring fungal cis-regulatory networks from genome sequences via unsupervised and interpretable representation learning. *Genetics*, 232(1), iyaf209.
