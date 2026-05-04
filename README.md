@@ -108,8 +108,8 @@ required (many *Aspergillus* TF specificities are only in Cis-BP).
 ```bash
 sbatch scripts/08_parse_tomtom.sh
 ```
-- **E-value < 4e-3** — for counting matched motifs 
-- **q-value ≤ 0.05** — for assigning TF names in heatmaps
+- **E-value < 4e-3** - for counting matched motifs 
+- **q-value ≤ 0.05** - for assigning TF names in heatmaps
 
 Read the summary:
 ```bash
@@ -121,7 +121,7 @@ cat results/parsed_tomtom/summary.txt
 ## Troubleshooting
 
 **Training loss stays above 4.5**
-Check how many OG files have ≥ 8 sequences — if fewer than 1,000, your OG
+Check how many OG files have ≥ 8 sequences - if fewer than 1,000, your OG
 files may not have been built correctly or THRESH is too high.
 ```bash
 for f in $OG_UP800/*.fa; do grep -c "^>" "$f"; done | awk '$1>=8' | wc -l
