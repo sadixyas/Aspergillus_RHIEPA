@@ -12,7 +12,7 @@ ENV_MEME="meme_suite"           # MEME / TomTom
 
 # ── Root directories ──────────────────────────────────────────
 ROOT="$HOME/bigdata/Aspergillus"
-SCRIPTS_DIR="$ROOT/Asper_promoter_rh/scripts"   # location of this file
+SCRIPTS_DIR="$ROOT/Asper_promoter_rh/Aspergillus/scripts"   # location of this file
 
 # ── Input data ────────────────────────────────────────────────
 ORTHO_DIR="$ROOT/Orthogroups"
