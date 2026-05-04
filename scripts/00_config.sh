@@ -11,7 +11,7 @@ ENV_TF_GPU="alan_tf_gpu"        # tensorflow + GPU
 ENV_MEME="meme_suite"           # MEME / TomTom
 
 # ── Root directories ──────────────────────────────────────────
-ROOT="$HOME/bigdata/Aspergillus"
+ROOT="/bigdata/stajichlab/sadikshs/Aspergillus/"
 SCRIPTS_DIR="$ROOT/Asper_promoter_rh/Aspergillus/scripts"   # location of this file
 
 # ── Input data ────────────────────────────────────────────────
