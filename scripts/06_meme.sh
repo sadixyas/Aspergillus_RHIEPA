@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH -p intel
+#SBATCH -p batch
 #SBATCH -N 1 -n 1
 #SBATCH --mem 16gb
 #SBATCH --time 01:00:00
@@ -7,7 +7,7 @@
 #SBATCH --out logs/06_meme.%j.out
 #SBATCH --err logs/06_meme.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 cd "$RH_DIR"
 module purge

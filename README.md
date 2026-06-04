@@ -55,21 +55,21 @@ Key settings to update:
 sbatch scripts/01_setup.sh
 ```
 Reads `Orthogroups.tsv`, keeps OGs present in at least `THRESH` species, and
-writes a 3-column map (`OG | species | gene_id`). Takes ~10 min.
+writes a 3-column map (`OG | species | gene_id`). Takes ~2 min.
 
 ### Step 2: Extract promoter sequences
 ```bash
 sbatch scripts/02_extract_promoters.sh
 ```
 Extracts up to 800 bp and 500 bp upstream of each gene for every species.
-Sequences with ambiguous bases (Ns) are discarded. Takes ~20 min.
+Sequences with ambiguous bases (Ns) are discarded. Takes ~15 min.
 
 ### Step 3: Group sequences by orthogroup
 ```bash
 sbatch scripts/03_group_by_og.sh
 ```
 Reorganises per-species fastas into per-OG fastas required by the training
-script. Produces `og_promoters/up800/` and `og_promoters/up500/`. Takes ~1 hour.
+script. Produces `og_promoters/up800/` and `og_promoters/up500/`. Takes ~10 mins.
 
 ### Step 4: Train the encoder
 ```bash
@@ -77,7 +77,7 @@ sbatch scripts/04_train_rh.sh
 ```
 Trains a neural network with 256 learnable PWMs using contrastive learning on
 the 800 bp sequences. Runs up to 100 epochs. Takes 1-7 days depending on GPU
-and OG count. Monitor training loss in `*_training_info.csv`, it should
+and OG count. Took me 2 days with gpu12. Monitor training loss in `*_training_info.csv`, it should
 decrease from ~5.5 to ~2.5–3.5.
 
 ### Step 5: Compute representations
@@ -92,7 +92,7 @@ This file is the input to all downstream analysis. Takes ~2 hours (CPU only).
 ```bash
 sbatch scripts/06_meme.sh
 ```
-Converts the 256 learned PWMs to MEME format for TomTom. Verify:
+Converts the 256 learned PWMs to MEME format for TomTom. Done in seconds. Verify:
 ```bash
 grep -c "^MOTIF" results/motifs.meme   # should print 256
 ```
@@ -102,7 +102,7 @@ grep -c "^MOTIF" results/motifs.meme   # should print 256
 sbatch scripts/07_tomtom.sh
 ```
 Runs TomTom against both JASPAR fungi and Cis-BP 2.0. Both databases are
-required (many *Aspergillus* TF specificities are only in Cis-BP).
+required (many *Aspergillus* TF specificities are only in Cis-BP). About 15 mins.
 
 ### Step 8: Parse results
 ```bash
@@ -110,6 +110,7 @@ sbatch scripts/08_parse_tomtom.sh
 ```
 - **E-value < 4e-3** - for counting matched motifs 
 - **q-value ≤ 0.05** - for assigning TF names in heatmaps
+Takes seconds only. 
 
 Read the summary:
 ```bash

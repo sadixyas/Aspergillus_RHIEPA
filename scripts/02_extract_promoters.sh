@@ -7,7 +7,7 @@
 #SBATCH --out logs/02_extract_promoters.%j.out
 #SBATCH --err logs/02_extract_promoters.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 SCRIPT="${SCRIPTS_DIR}/extract_promoters.py"
 
@@ -19,13 +19,13 @@ echo "[ref] ${REF_SPECIES}"
 python "$SCRIPT" \
   --genome "$REF_DNA" --gff "$REF_GFF" \
   --out "${BY_SPECIES_UP800}/${REF_BASE}.up800.fa" --upstream 800 \
-  --species "$REF_SPECIES" --id_attr "$ID_ATTR" \
+  --species "$REF_SPECIES" --id_attr "protein_source_id" \
   --drop_ambig --min_len "$MINLEN"
 
 python "$SCRIPT" \
   --genome "$REF_DNA" --gff "$REF_GFF" \
   --out "${BY_SPECIES_UP500}/${REF_BASE}.up500.fa" --upstream 500 \
-  --species "$REF_SPECIES" --id_attr "$ID_ATTR" \
+  --species "$REF_SPECIES" --id_attr "protein_source_id" \
   --drop_ambig --min_len "$MINLEN"
 
 # ── Panel species ──────────────────────────────────────────────
@@ -41,13 +41,13 @@ while read -r proteome; do
   python "$SCRIPT" \
     --genome "$dna" --gff "$gff" \
     --out "${BY_SPECIES_UP800}/${base}.up800.fa" --upstream 800 \
-    --species "$base" --id_attr "$ID_ATTR" \
+    --species "$base" --id_attr "Parent" \
     --drop_ambig --min_len "$MINLEN"
 
   python "$SCRIPT" \
     --genome "$dna" --gff "$gff" \
     --out "${BY_SPECIES_UP500}/${base}.up500.fa" --upstream 500 \
-    --species "$base" --id_attr "$ID_ATTR" \
+    --species "$base" --id_attr "Parent" \
     --drop_ambig --min_len "$MINLEN"
 
 done < "$PANEL"

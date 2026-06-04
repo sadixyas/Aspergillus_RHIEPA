@@ -7,7 +7,7 @@
 #SBATCH --out logs/01_setup.%j.out
 #SBATCH --err logs/01_setup.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 LOG="${LOG_DIR}/setup_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG") 2>&1

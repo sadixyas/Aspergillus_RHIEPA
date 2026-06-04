@@ -1,11 +1,11 @@
 #!/bin/bash -l
-#SBATCH -p intel --cpus-per-task=16 --mem 256gb
+#SBATCH -p batch --cpus-per-task=16 --mem 256gb
 #SBATCH --time 6:30:00
 #SBATCH --job-name=compute_rep
 #SBATCH --out logs/05_compute_rep.%j.out
 #SBATCH --err logs/05_compute_rep.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 cd "$RH_DIR"
 conda activate "$ENV_TF_GPU"

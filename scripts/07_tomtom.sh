@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH -p intel
+#SBATCH -p batch
 #SBATCH -N 1 -n 8
 #SBATCH --mem 32gb
 #SBATCH --time 04:00:00
@@ -7,7 +7,7 @@
 #SBATCH --out logs/07_tomtom.%j.out
 #SBATCH --err logs/07_tomtom.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 conda activate "$ENV_MEME"
 

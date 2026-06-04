@@ -7,7 +7,7 @@
 #SBATCH --out logs/03_group_by_og.%j.out
 #SBATCH --err logs/03_group_by_og.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 conda activate "$ENV_PROMOTER"
 

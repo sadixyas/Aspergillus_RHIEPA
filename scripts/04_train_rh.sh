@@ -1,11 +1,15 @@
 #!/bin/bash -l
-#SBATCH -p gpu --gres=gpu:1 --cpus-per-task=8 --mem 64gb
-#SBATCH --time=7-00:00:00
+#SBATCH -p exfab
+#SBATCH -A exfab
+#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64gb
+#SBATCH --time=6-00:00:00
 #SBATCH --job-name=train_rh
 #SBATCH --out logs/04_train_rh.%j.out
 #SBATCH --err logs/04_train_rh.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 cd "$RH_DIR"
 conda activate "$ENV_TF_GPU"

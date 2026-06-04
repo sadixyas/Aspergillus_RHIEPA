@@ -12,7 +12,7 @@ ENV_MEME="meme_suite"           # MEME / TomTom
 
 # ── Root directories ──────────────────────────────────────────
 ROOT="/bigdata/stajichlab/sadikshs/Aspergillus/"
-SCRIPTS_DIR="$ROOT/Asper_promoter_rh/Aspergillus/scripts"   # location of this file
+SCRIPTS_DIR="$ROOT/Asper_promoter_rh/Aspergillus_RHIEPA/scripts"   # location of this file
 
 # ── Input data ────────────────────────────────────────────────
 ORTHO_DIR="$ROOT/Orthogroups"
@@ -48,9 +48,9 @@ OG_MAP_FILTERED="${ORTHO_DIR}/og_map_filtered.tsv"
 ORTHO_TSV="${ORTHO_DIR}/Orthogroups.tsv"
 
 # ── Ortholog filtering parameters ─────────────────────────────
-# With 406 species, require ~65% coverage = 264 species minimum.
-# Do NOT require single-copy — allows gene families with paralogs.
-THRESH=264
+# With 405 species, require ~65% coverage = 263 species minimum.
+# Do NOT require single-copy - allows gene families with paralogs.
+THRESH=263
 
 # ── Model / training parameters ───────────────────────────────
 FILTER_NUM=256      # number of PWMs to learn
@@ -85,8 +85,7 @@ TOMTOM_CISBP_DIR="${RESULTS_DIR}/tomtom_cisbp"
 PARSE_DIR="${RESULTS_DIR}/parsed_tomtom"
 LOG_DIR="${ROOT}/logs"
 
-# ── GFF extraction parameters ─────────────────────────────────
-ID_ATTR="protein_id"
+# ── GFF extraction parameters ────────────────────────────────
 MINLEN=50
 
 # ── Create directories that must exist before any job runs ────

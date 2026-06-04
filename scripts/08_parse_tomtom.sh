@@ -7,7 +7,7 @@
 #SBATCH --out logs/08_parse_tomtom.%j.out
 #SBATCH --err logs/08_parse_tomtom.%j.err
 set -euo pipefail
-source "$(dirname "$0")/00_config.sh"
+source ~/bigdata/Aspergillus/Asper_promoter_rh/Aspergillus_RHIEPA/scripts/00_config.sh
 
 module purge
 module load R/4.5.0
